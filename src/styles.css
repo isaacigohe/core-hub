@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+.app {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  background: #1e293b;
+  padding: 20px;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.hero {
+  background: linear-gradient(to right, #6366f1, #9333ea);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.row-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+}
+
+.card {
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spinner {
+  border: 4px solid #ccc;
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #6366f1;
+}
+
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
