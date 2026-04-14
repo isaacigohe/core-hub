@@ -1,5 +1,18 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Search from "./pages/search";
+import Auth from "./pages/Auth";
+
 function App() {
-  return <h1>My Movie Tracker Works 🎬</h1>;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
