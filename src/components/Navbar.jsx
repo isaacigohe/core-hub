@@ -12,11 +12,13 @@ function Navbar({ setFilter }) {
       </div>
 
       {/* RIGHT SIDE */}
-      <div>
-        <button onClick={() => setFilter("all")}>All</button>
-        <button onClick={() => setFilter("watched")}>Watched</button>
-        <button onClick={() => setFilter("favorites")}>Favorites</button>
-      </div>
+      {setFilter && (
+        <div>
+          <button onClick={() => setFilter("all")}>All</button>
+          <button onClick={() => setFilter("watched")}>Watched</button>
+          <button onClick={() => setFilter("favorites")}>Favorites</button>
+        </div>
+      )}
 
     </div>
   );
