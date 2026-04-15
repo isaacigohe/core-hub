@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { searchMovies } from "../services/api";
 import { addMovie } from "../services/movieService";
+import { auth } from "../services/firebase";
+import { useNavigate } from "react-router-dom";
 
 function Search() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
 
   const handleSearch = async () => {
     const results = await searchMovies(query);
@@ -12,7 +15,14 @@ function Search() {
   };
 
   const handleAdd = async (movie) => {
+    if (!auth.currentUser) {
+      alert("Please login first!");
+      navigate("/auth");
+      return;
+    }
+
     await addMovie({
+      userId: auth.currentUser.uid,
       title: movie.title,
       poster: movie.poster_path,
       releaseDate: movie.release_date,
@@ -21,11 +31,14 @@ function Search() {
       status: "want",
       favorite: false
     });
-    alert("Added!");
+
+    alert("Added to your list!");
   };
 
   return (
     <div>
+      <h2>Explore Movies</h2>
+
       <input onChange={(e) => setQuery(e.target.value)} />
       <button onClick={handleSearch}>Search</button>
 
