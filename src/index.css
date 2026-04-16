@@ -1,9 +1,12 @@
+/* 1. Imports FIRST - Must be at the very top */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
+/* 2. Tailwind SECOND */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* 3. Variables inside the Base Layer */
 @layer base {
   :root {
     --background: 220 20% 7%;
@@ -50,20 +53,22 @@
     --shadow-glow: 0 0 30px -5px hsl(38 92% 55% / 0.2);
     --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.5);
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
+    /* If you still get a 'font-body' error, ensure your tailwind.config.js 
+       has 'body' defined in the fontFamily section! */
     @apply bg-background text-foreground font-body antialiased;
   }
 }
 
+/* 4. Custom Utility Classes */
 @layer utilities {
   .glass {
+    /* Updated syntax for Tailwind v3 opacity support */
     @apply bg-card/80 backdrop-blur-xl border border-border/50;
   }
 
