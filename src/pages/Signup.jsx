@@ -8,11 +8,9 @@ import { Film, Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
-/**
- * Signup component
- */
 const Signup = () => {
-  const { signup, user, loading } = useAuth();
+  // Use 'signUp' to match your AuthContext
+  const { signUp, user, loading } = useAuth();
   const { toast } = useToast();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,10 +25,15 @@ const Signup = () => {
     e.preventDefault();
     setSubmitting(true);
     try {
-      await signup(email, password, name);
-      toast({ title: "Account created!", description: "Welcome to Core-Hub" });
+      // Corrected: Calling 'signUp' from AuthContext
+      await signUp(email, password);
+      toast({ title: "Account created!", description: `Welcome, ${name}!` });
     } catch (err) {
-      toast({ title: "Signup failed", description: err.message, variant: "destructive" });
+      toast({ 
+        title: "Signup failed", 
+        description: err.message, 
+        variant: "destructive" 
+      });
     } finally {
       setSubmitting(false);
     }
