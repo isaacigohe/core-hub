@@ -40,12 +40,11 @@ The platform focuses on a **premium aesthetic**, utilizing glassmorphism and gol
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 ### **Frontend**
 * React (Vite)
 * Tailwind CSS
-* Lucide React (Icons)
 * Shadcn UI (Components)
 
 ### **Backend / BaaS**
@@ -57,7 +56,7 @@ The platform focuses on a **premium aesthetic**, utilizing glassmorphism and gol
 
 ---
 
-## 💻 Running the Project Locally
+##  Running the Project Locally
 
 Follow these steps to set up and run the project on your local machine.
 
@@ -119,7 +118,7 @@ npm run dev
 * Change the status to Watched on your Dashboard
 * Try the Logout button in the Navbar
 
-## ⚠️ Common Issues
+##  Common Issues
 
 ### 1. 400 Error during Sign Up
 
