@@ -10,7 +10,7 @@ import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
 import Dashboard from "@/pages/Dashboard";
 import SearchPage from "@/pages/SearchPage";
-import NotFound from "@/pages/NotFound";
+import NotFound from "@/pages/Notfound";
 
 const queryClient = new QueryClient();
 
