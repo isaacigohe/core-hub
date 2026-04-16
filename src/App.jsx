@@ -21,6 +21,11 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
+          {/* INSERT THE GLOWS HERE */}
+        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-background">
+          <div className="absolute -top-[10%] -right-[10%] h-[500px] w-[600px] rounded-full bg-primary/10 blur-[120px]" />
+          <div className="absolute -bottom-[10%] -left-[5%] h-[400px] w-[500px] rounded-full bg-amber-600/5 blur-[100px]" />
+        </div>
           <Navbar />
           <Routes>
             <Route path="/login" element={<Login />} />
