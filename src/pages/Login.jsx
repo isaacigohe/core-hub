@@ -8,11 +8,9 @@ import { Film, Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
-/**
- * Login component
- */
 const Login = () => {
-  const { login, user, loading } = useAuth();
+  // Use 'signIn' to match your AuthContext
+  const { signIn, user, loading } = useAuth();
   const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,10 +24,15 @@ const Login = () => {
     e.preventDefault();
     setSubmitting(true);
     try {
-      await login(email, password);
+      // Corrected: Calling 'signIn' from AuthContext
+      await signIn(email, password);
       toast({ title: "Welcome back!" });
     } catch (err) {
-      toast({ title: "Login failed", description: err.message, variant: "destructive" });
+      toast({ 
+        title: "Login failed", 
+        description: err.message, 
+        variant: "destructive" 
+      });
     } finally {
       setSubmitting(false);
     }
