@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
 // 1. Create the Context without the <AuthContextType> generic
 const AuthContext = createContext(null);
 
