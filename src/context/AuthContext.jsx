@@ -1,60 +1,43 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import {
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
-  updateProfile,
-} from "firebase/auth";
-import { auth } from "@/lib/firebase";
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-/**
- * AuthContext for managing user authentication state
- */
+// 1. Create the Context without the <AuthContextType> generic
 const AuthContext = createContext(null);
 
-/**
- * Hook to use the AuthContext
- */
-export const useAuth = () => {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth must be used within AuthProvider");
-  return ctx;
-};
-
-/**
- * AuthProvider component
- * @param {Object} props
- * @param {React.ReactNode} props.children
- */
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Example logic (replace with your actual auth logic)
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (u) => {
-      setUser(u);
-      setLoading(false);
-    });
-    return unsub;
+    const checkAuth = async () => {
+      try {
+        // Your login check here
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+    checkAuth();
   }, []);
 
-  const login = async (email, password) => {
-    await signInWithEmailAndPassword(auth, email, password);
-  };
-
-  const signup = async (email, password, displayName) => {
-    const cred = await createUserWithEmailAndPassword(auth, email, password);
-    await updateProfile(cred.user, { displayName });
-  };
-
-  const logout = async () => {
-    await signOut(auth);
+  const value = {
+    user,
+    loading,
+    // Add your login/logout functions here
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, signup, logout }}>
-      {children}
+    <AuthContext.Provider value={value}>
+      {!loading && children}
     </AuthContext.Provider>
   );
+};
+
+// 2. Custom hook for easy access
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
 };
